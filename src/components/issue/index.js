@@ -7,7 +7,7 @@ export default class Issue extends Component {
         return (
             <div class={style.issue}>
                 <h1> Issue # {issue} </h1>
-                <p>
+                <p class='pa1'>
                     Hello Joe! I'm an issue!
                 </p>
             </div>
