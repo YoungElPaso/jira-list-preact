@@ -1,8 +1,7 @@
 import { h, Component } from "preact";
 import twemoji from "twemoji";
-import fake from "./fake-data.json";
 // Some fake data to test w/.
-const faker = fake.issues[0];
+import fake from "./fake-data.json";
 
 /**
  * Issue detail component. Renders a single issue.
@@ -11,15 +10,17 @@ const faker = fake.issues[0];
 export default class Issue extends Component {
   // Rendering the issue.
 	render({ issue }) {
+    // This is fake! Normally this would be loaded elsewhere...
+		let iS = fake.issues[0];
 		return (
       <section class="mt5 pa3 bg-light-gray">
         <h1 class="f3"> Issue: {issue.toUpperCase()} </h1>
         <h2 class="f4">
-          <Status />
-          <Priority />
-          <Stars />
+          <Status status={iS.status} />
+          <Priority priority={iS.priority} />
+          <Stars stars={iS.stars} />
         </h2>
-        <Description />
+        <Description description={iS.description} />
       </section>
 		);
 	}
@@ -36,13 +37,12 @@ export default class Issue extends Component {
 
 // The actual Priority component.
 class Status extends Component {
-	render({ issue_status }) {
-		let fakeStatus = faker.status;
+	render({ status }) {
 		return (
       <div class="dib mr1">
         Status:
         <span class="bg-green dib mh1 pa1 br3 tc">
-          {fakeStatus.toLowerCase()}
+          {status.toLowerCase()}
         </span>
       </div>
 		);
@@ -51,13 +51,12 @@ class Status extends Component {
 
 // The actual Priority component.
 class Priority extends Component {
-	render({ issue_priority }) {
-		let fakePriority = faker.priority;
+	render({ priority }) {
 		return (
       <div class="dib mr1">
         Priority:
         <span class="bg-orange dib mh1 pa1 br3 tc">
-          {fakePriority.toLowerCase()} 🔺
+          {priority.toLowerCase()} 🔺
         </span>
       </div>
 		);
@@ -66,27 +65,25 @@ class Priority extends Component {
 
 // The actual Stars count component.
 class Stars extends Component {
-	render({ issue_stars }) {
-		let fakeStars = faker.stars;
+	render({ stars }) {
 		return (
       <div class="dib mr1">
         <span class="bg-yellow dib mh1 pa1 br3 tc">
-          {fakeStars} ⭐
+          {stars} ⭐
         </span>
       </div>
 		);
 	}
 }
 
-// The actual Stars count component.
+// The actual Description component.
 class Description extends Component {
-	render({ issue_description }) {
-		let fakeDescription = faker.description;
+	render({ description }) {
 		return (
       <div>
         <h3 class="f5"> Description: </h3>
         <p>
-          {fakeDescription}
+          {description}
         </p>
       </div>
 		);
