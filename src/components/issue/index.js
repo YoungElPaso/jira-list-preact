@@ -1,13 +1,8 @@
 import { h, Component } from "preact";
 import twemoji from "twemoji";
-
+import fake from "./fake-data.json";
 // Some fake data to test w/.
-const faker = {
-	stars: 15,
-	status: "opened",
-	priority: "medium",
-	description: "Hello Joe! I'm an issue! :)"
-};
+const faker = fake.issues[0];
 
 /**
  * Issue detail component. Renders a single issue.
@@ -29,7 +24,7 @@ export default class Issue extends Component {
 		);
 	}
 
-  // Adding some stuff to do after render.
+  // Handle things like adding twemoji.
 	componentDidMount() {
 		twemoji.parse(this.base, {
 			folder: "svg",
