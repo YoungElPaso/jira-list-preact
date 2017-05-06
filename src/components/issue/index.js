@@ -53,17 +53,17 @@ class Status extends Component {
 class Priority extends Component {
 	render({ priority }) {
     let p = priority.toLowerCase();
+
+    let valMap = {
+      'lowest': 'blue',
+      'low' : 'green',
+      'medium': 'orange',
+      'high' : 'light-red',
+      'highest': 'red'
+    }
     let classVal = 'bg-orange';
-    if (p == 'lowest') {
-      classVal = 'blue';
-    } else if (p == 'low') {
-      classVal = 'green';
-    } else if (p == 'medium') {
-      classVal = 'orange';
-    } else if (p == 'high') {
-      classVal = 'light-red';
-    } else if (p == 'highest') {
-      classVal = 'red';
+    if (valMap.hasOwnProperty(p)) {
+      classVal = valMap[p];
     }
 
 		return (
